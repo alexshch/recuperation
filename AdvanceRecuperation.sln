@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teplotech.Recuperation.GasRefrigeration", "Teplotech.Recuperation.GasRefrigeration\Teplotech.Recuperation.GasRefrigeration.csproj", "{A8399F0B-1E3B-4ACE-B16C-E4E6B354F68E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teplotech.GasParameters", "Teplotech.GasParameters\Teplotech.GasParameters.csproj", "{331CD668-7A72-4CCC-8CE4-0B8D86372FA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecuperationTest", "RecuperationTest\RecuperationTest.csproj", "{444D43DB-6C3D-4542-8CC2-488F75961386}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teplotech.Recuperation.HeatBalance", "Teplotech.Recuperation.HeatBalance\Teplotech.Recuperation.HeatBalance.csproj", "{4D69E590-9504-4F33-B849-D9CBC32863A2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A8399F0B-1E3B-4ACE-B16C-E4E6B354F68E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8399F0B-1E3B-4ACE-B16C-E4E6B354F68E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8399F0B-1E3B-4ACE-B16C-E4E6B354F68E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8399F0B-1E3B-4ACE-B16C-E4E6B354F68E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{331CD668-7A72-4CCC-8CE4-0B8D86372FA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{331CD668-7A72-4CCC-8CE4-0B8D86372FA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{331CD668-7A72-4CCC-8CE4-0B8D86372FA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{331CD668-7A72-4CCC-8CE4-0B8D86372FA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{444D43DB-6C3D-4542-8CC2-488F75961386}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{444D43DB-6C3D-4542-8CC2-488F75961386}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{444D43DB-6C3D-4542-8CC2-488F75961386}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{444D43DB-6C3D-4542-8CC2-488F75961386}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D69E590-9504-4F33-B849-D9CBC32863A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D69E590-9504-4F33-B849-D9CBC32863A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D69E590-9504-4F33-B849-D9CBC32863A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D69E590-9504-4F33-B849-D9CBC32863A2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
