@@ -53,10 +53,11 @@ namespace Teplotech.Recuperation.HeatBalance
             return eps;
         }
 
-        // подумать как расчитывать epsDeltaT
+        // раcсчитываем epsdeltat
         private double GetEpsilonDeltaT(double p, double r)
         {
-            throw new NotImplementedException();
+            var eps = new EpsilonDeltaT();
+            return eps.GetEpsilonDeltaT(p, r);
         }
 
         /// <summary>
@@ -74,7 +75,6 @@ namespace Teplotech.Recuperation.HeatBalance
             throw new NotImplementedException();
             // return Tgas1 - (Vair * ((CairInput + CairOutput) / 2) * (Tair2 - Tair1) / (Vgas * (CgasInput - 0.1)));
         }
-
 
 
     }
