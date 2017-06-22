@@ -64,16 +64,27 @@ namespace Teplotech.Recuperation.HeatBalance
         /// расчет тепературы дыма на выходе
         /// </summary>
         /// <param name="vGasInput">объем газа на входе в нм3 </param>
-        /// <param name="tGas1">температура газа на входе в градусах</param>
+        /// <param name="tGasInput">температура газа на входе в градусах</param>
         /// <param name="vAirInput">объем воздуха на входе в нм3</param>
         /// <param name="tAirInput">температура воздуха на входе в С</param>
         /// <param name="tAirOutput">температура воздуха на выходе в С</param>
         /// <param name="lossFactor">коэффициент потерь тепла</param>
         /// <returns>Темпепратура дым на выходе установки </returns>
-        private double GetOutputGasTemperature(double vGasInput, double tGas1, double vAirInput, double tAirInput, double tAirOutput)
+        private double GetOutputGasTemperature(double vGasInput, double tGasInput, double vAirInput, double tAirInput, double tAirOutput)
         {
-            throw new NotImplementedException();
-            // return Tgas1 - (Vair * ((CairInput + CairOutput) / 2) * (Tair2 - Tair1) / (Vgas * (CgasInput - 0.1)));
+            // масса воздуха
+            double weightAir = vAirInput * _air.GetDensityByTemperature(tAirOutput);
+            // масса дыма
+            double weightGas = vGasInput * _fume.GetDensityByTemperature(tGasInput);
+
+            double cAirInput = _air.GetThermalCapacity(tAirInput);
+
+            double cAirOutput = _air.GetThermalCapacity(tAirOutput);
+
+            double cGasInput = _fume.GetThermalCapacity(tGasInput);
+            //  ввиду того что средняя теплоемкость дыма в расчетах CgasInput - 0.1 - у нас она тоже будет с потолка
+
+            return tGasInput - weightAir * ((cAirInput + cAirOutput) / 2) * (tAirOutput - tAirInput) / (weightGas * (cGasInput - 0.1));
         }
 
 
