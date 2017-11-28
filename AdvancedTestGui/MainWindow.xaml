@@ -1,0 +1,34 @@
+﻿<Window x:Class="AdvancedTestGui.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:advancedTestGui="clr-namespace:AdvancedTestGui"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <DataTemplate x:Key="textBoxTemplate">
+            <TextBox Text="{Binding Path=Value}" Width="100"></TextBox>
+        </DataTemplate>
+
+        <advancedTestGui:SettingsTemplateSelector 
+            x:Key="settingsTemplateSelector" 
+            TextBoxTemplate="{StaticResource textBoxTemplate}"/>
+
+    </Window.Resources>
+
+    <ListView ItemsSource="{Binding Path=Settings}" SelectionMode="Multiple">
+        <ListView.View>
+            <GridView>
+                <GridView.Columns>
+                    <GridViewColumn 
+                        Header="Name" 
+                        DisplayMemberBinding="{Binding Path=Name}" />
+                    <GridViewColumn 
+                        Header="%" 
+                        CellTemplateSelector="{StaticResource settingsTemplateSelector}" />
+                </GridView.Columns>
+            </GridView>
+        </ListView.View>
+    </ListView>
+</Window>

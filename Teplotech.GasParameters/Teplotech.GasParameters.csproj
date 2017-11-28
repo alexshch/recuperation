@@ -44,6 +44,7 @@
     <Compile Include="Air.cs" />
     <Compile Include="AnyFume.cs" />
     <Compile Include="GasMix.cs" />
+    <Compile Include="GasN2.cs" />
     <Compile Include="IGas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,0 +1,259 @@
+﻿<Window x:Class="RecuperationGui.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModel="clr-namespace:RecuperationGui.ViewModel"
+        mc:Ignorable="d"
+        Title="Расчет параметров рекуператора" Height="350" Width="600">
+    <Window.DataContext>
+        <viewModel:MainWindowViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <DataTemplate x:Key="textBoxTemplate">
+            <TextBox Text="{Binding Path=Value}" Width="100"></TextBox>
+        </DataTemplate>
+
+        <viewModel:GasItemTemplateSelector 
+            x:Key="gasItemTemplateSelector" 
+            TextBoxTemplate="{StaticResource textBoxTemplate}"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition MaxHeight="25"/>
+            <RowDefinition Height="0.7*"/>
+            <RowDefinition MinHeight="55" MaxHeight="55"/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0" HorizontalAlignment="Left" Width="517" Margin="3,3,3,3">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Сохранить расчет"></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="Загрузить расчет"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Правка">
+            </MenuItem>
+        </Menu>
+        <TabControl Grid.Row="1">
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock>Парметры газов</TextBlock>
+                </TabItem.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition MaxWidth="3"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <StackPanel>
+                            <DockPanel>
+                                <Label Content="Q1вх" MinWidth="40"/>
+                                <TextBox MinWidth="50" Margin="3,3,3,3"></TextBox>
+                                <Label Content="Нм³/ч"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Label Content="T1вх" MinWidth="40"/>
+                                <TextBox MinWidth="50" Margin="3,3,3,3"></TextBox>
+                                <Label Content="°C"/>
+                            </DockPanel>
+                        </StackPanel>
+                        <StackPanel>
+                            <DockPanel>
+                                <Label Content="Q2вх" MinWidth="40"/>
+                                <TextBox MinWidth="50" Margin="3,3,3,3"></TextBox>
+                                <Label Content="Нм³/ч"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Label Content="T2вх" MinWidth="40"/>
+                                <TextBox MinWidth="50" Margin="3,3,3,3"></TextBox>
+                                <Label Content="°C"/>
+                            </DockPanel>
+                        </StackPanel>
+                        <StackPanel Margin="3,3,3,3">
+                            <RadioButton Content="Нм³/ч"></RadioButton>
+                            <RadioButton Content="кг/с"></RadioButton>
+                        </StackPanel>
+                        <Separator ></Separator>
+                        <StackPanel Margin="3,3,3,3">
+                            <DockPanel>
+                                <Label Content="P1:" MinWidth="40"/>
+                                <TextBox MinWidth="50" Margin="3,3,3,3"></TextBox>
+                                <Label Content="dP1:"  MinWidth="40" />
+                                <TextBox MinWidth="50" Margin="3,3,3,3"></TextBox>
+                                <Label Content="Па"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Label Content="P2:" MinWidth="40"/>
+                                <TextBox MinWidth="50" Margin="3,3,3,3"></TextBox>
+                                <Label Content="dP2:" MinWidth="40"/>
+                                <TextBox MinWidth="50" Margin="3,3,3,3"></TextBox>
+                                <Label Content="Па"/>
+                            </DockPanel>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+                        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                    </StackPanel>
+                    <DockPanel Grid.Column="2">
+                        <StackPanel Margin="3,3,3,3">
+                            <DockPanel Margin="3,3,3,3">
+                                <Label Content="T1вых"/>
+                                <TextBox Width="60" HorizontalAlignment="Left" Margin="10,0,0,0"></TextBox>
+                            </DockPanel>
+                            <DockPanel Margin="3,3,3,3">
+                                <Label Content="T2вых"/>
+                                <TextBox Width="60" HorizontalAlignment="Left" Margin="10,0,0,0"></TextBox>
+                            </DockPanel>
+                            <StackPanel Margin="3,3,3,3">
+                                <RadioButton Content="T1вых"></RadioButton>
+                                <RadioButton Content="T2вых"></RadioButton>
+                            </StackPanel>
+                        </StackPanel>
+                    </DockPanel>
+                </Grid>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock>Состав газов</TextBlock>
+                </TabItem.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="3"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <Label Content="Состав газа 1" Height="23" HorizontalAlignment="Center"></Label>
+                        <DockPanel>
+                            <ListView x:Name="TargetElementsList" BorderThickness="1" 
+                                      ItemsSource="{Binding Path=GasCompositionItems}"
+                                      SelectionMode="Multiple"
+                                      Width="100" MinHeight="180" Margin="3,3,3,3">
+                                <!--<i:Interaction.Triggers>
+                                <EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{Binding Path=UpdateUserPropsScriptCommand}" 
+                                                           CommandParameter="{Binding ElementName=ResourcePropsList, Path=SelectedItems}"/>
+                                </EventTrigger>
+                            </i:Interaction.Triggers>-->
+                                <ListView.View>
+                                    <GridView>
+                                        <GridView.Columns>
+                                            <GridViewColumn 
+                                                Header="Name" 
+                                                DisplayMemberBinding="{Binding Path=Name}" 
+                                                Width="50"/>
+                                            <GridViewColumn 
+                                                Header="%" 
+                                                CellTemplateSelector="{StaticResource gasItemTemplateSelector}" 
+                                                Width="50"/>
+                                        </GridView.Columns>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                            <TextBox Margin="3,3,3,3"></TextBox>
+                        </DockPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+                        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="2">
+                        <Label Content="Сотсав газа 2" Height="23" HorizontalAlignment="Center"></Label>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock>Парметры насадки</TextBlock>
+                </TabItem.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="3"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <Label Content="Параметры ячеек" HorizontalAlignment="Center"></Label>
+                        <DockPanel>
+                            <Label Content="h1:"></Label>
+                            <TextBox Width="50" Margin="3,3,3,3"/>
+                            <Label Content="dp1:"></Label>
+                            <TextBox Width="50" Margin="3,3,3,3"/>
+                            <Label Content="sp1:"></Label>
+                            <TextBox Width="50" Margin="3,3,3,3"/>
+                            <Label Content="мм"></Label>
+                        </DockPanel>
+                        <DockPanel>
+                            <Label Content="h2:"></Label>
+                            <TextBox Width="50" Margin="3,3,3,3"/>
+                            <Label Content="dp2:"></Label>
+                            <TextBox Width="50" Margin="3,3,3,3"/>
+                            <Label Content="sp1:"></Label>
+                            <TextBox Width="50" Margin="3,3,3,3"/>
+                            <Label Content="мм"></Label>
+                        </DockPanel>
+                        <StackPanel>
+                            <DockPanel>
+                                <Label Content="lp1:"></Label>
+                                <TextBox Width="50" Margin="3,3,3,3"/>
+                                <Label Content="Вт/(м*°C)"></Label>
+                                <Label Content="Δ1:" Margin="20,0,0,0"></Label>
+                                <TextBox Width="50" Margin="3,3,3,3"/>
+                                <Label Content="мкм"></Label>
+                            </DockPanel>
+                            <DockPanel>
+                                <Label Content="lp2:"></Label>
+                                <TextBox Width="50" Margin="3,3,3,3"/>
+                                <Label Content="Вт/(м*°C)"></Label>
+                                <Label Content="Δ2:" Margin="20,0,0,0"></Label>
+                                <TextBox Width="50" Margin="3,3,3,3"/>
+                                <Label Content="мкм"></Label>
+                            </DockPanel>
+                        </StackPanel>
+
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+                        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="2">
+                        <Label Content="Размеры насадки" HorizontalAlignment="Center" Height="25"/>
+                        <DockPanel>
+                            <Label Content="L1:" />
+                            <TextBox Width="50" Margin="3,3,3,3"></TextBox>
+                            <Label Content="X" />
+                            <TextBox Width="50" Margin="3,3,3,3"></TextBox>
+                            <Label Content="=" />
+                            <TextBox Width="50" Margin="3,3,3,3"></TextBox>
+                            <Label Content="мм" />
+                        </DockPanel>
+                        <DockPanel>
+                            <Label Content="L2:" />
+                            <TextBox Width="50" Margin="3,3,3,3"></TextBox>
+                            <Label Content="X" />
+                            <TextBox Width="50" Margin="3,3,3,3"></TextBox>
+                            <Label Content="=" />
+                            <TextBox Width="50" Margin="3,3,3,3"></TextBox>
+                            <Label Content="мм" />
+                        </DockPanel>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock>Дополнительные параметры</TextBlock>
+                </TabItem.Header>
+            </TabItem>
+        </TabControl>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <Button  Content="Рассчитать" MaxWidth="100" MaxHeight="25" HorizontalAlignment="Center" Margin="3,3,3,3" ></Button>
+                <Button  Content="Сохранить" MaxWidth="100" MaxHeight="25" HorizontalAlignment="Center" Margin="3,3,3,3" ></Button>
+            </StackPanel>
+            <TextBox Grid.Column="1" Margin="3,3,3,3"></TextBox>
+        </Grid>
+    </Grid>
+</Window>
+

@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecuperationTest", "Recuper
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teplotech.Recuperation.HeatBalance", "Teplotech.Recuperation.HeatBalance\Teplotech.Recuperation.HeatBalance.csproj", "{4D69E590-9504-4F33-B849-D9CBC32863A2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecuperationGui", "RecuperationGui\RecuperationGui.csproj", "{8E02521D-C704-47A7-A2DB-2CD03BEB9E7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvancedTestGui", "AdvancedTestGui\AdvancedTestGui.csproj", "{8E4B7603-BE8A-428D-B932-7BED0351290A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{4D69E590-9504-4F33-B849-D9CBC32863A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D69E590-9504-4F33-B849-D9CBC32863A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D69E590-9504-4F33-B849-D9CBC32863A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E02521D-C704-47A7-A2DB-2CD03BEB9E7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E02521D-C704-47A7-A2DB-2CD03BEB9E7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E02521D-C704-47A7-A2DB-2CD03BEB9E7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E02521D-C704-47A7-A2DB-2CD03BEB9E7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E4B7603-BE8A-428D-B932-7BED0351290A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E4B7603-BE8A-428D-B932-7BED0351290A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E4B7603-BE8A-428D-B932-7BED0351290A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E4B7603-BE8A-428D-B932-7BED0351290A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
