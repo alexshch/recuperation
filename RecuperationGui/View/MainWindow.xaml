@@ -11,13 +11,7 @@
         <viewModel:MainWindowViewModel/>
     </Window.DataContext>
     <Window.Resources>
-        <DataTemplate x:Key="textBoxTemplate">
-            <TextBox Text="{Binding Path=Value}" Width="45"></TextBox>
-        </DataTemplate>
-
-        <viewModel:GasItemTemplateSelector 
-            x:Key="gasItemTemplateSelector" 
-            TextBoxTemplate="{StaticResource textBoxTemplate}"/>
+        
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -143,10 +137,14 @@
                                                 Header="Name" 
                                                 DisplayMemberBinding="{Binding Path=Name}" 
                                                 Width="60"/>
-                                            <GridViewColumn 
-                                                Header="%" 
-                                                CellTemplateSelector="{StaticResource gasItemTemplateSelector}" 
-                                                Width="60"/>
+                                            <GridViewColumn Header="%" Width="60">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBox Text="{Binding Path=Value}" Width="45">
+                                                    </TextBox>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
                                         </GridView.Columns>
                                     </GridView>
                                 </ListView.View>
@@ -177,10 +175,14 @@
                                                 Header="Name" 
                                                 DisplayMemberBinding="{Binding Path=Name}" 
                                                 Width="60"/>
-                                            <GridViewColumn 
-                                                Header="%" 
-                                                CellTemplateSelector="{StaticResource gasItemTemplateSelector}" 
-                                                Width="60"/>
+                                            <GridViewColumn Header="%" Width="60">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBox Text="{Binding Path=Value}" Width="45">
+                                                        </TextBox>
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
                                         </GridView.Columns>
                                     </GridView>
                                 </ListView.View>

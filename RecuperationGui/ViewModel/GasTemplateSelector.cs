@@ -10,23 +10,13 @@ namespace RecuperationGui.ViewModel
 {
     public class GasCompositionItem
     {
-        public GasCompositionItem(string name, int value)
+        public GasCompositionItem(string name, double value)
         {
             Name = name;
             Value = value;
         }
 
         public string Name { get; private set; }
-        public object Value { get; set; }
-    }
-
-    public class GasItemTemplateSelector : DataTemplateSelector
-    {
-        public DataTemplate TextBoxTemplate { get; set; }
-        public override DataTemplate SelectTemplate(object item, DependencyObject container)
-        {
-            GasCompositionItem gasCompositionItem = item as GasCompositionItem;
-            return TextBoxTemplate;
-        }
+        public double Value { get; set; }
     }
 }
