@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModel="clr-namespace:RecuperationGui.ViewModel"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
         Title="Расчет параметров рекуператора" Height="350" Width="600">
     <Window.DataContext>
@@ -11,7 +12,7 @@
     </Window.DataContext>
     <Window.Resources>
         <DataTemplate x:Key="textBoxTemplate">
-            <TextBox Text="{Binding Path=Value}" Width="100"></TextBox>
+            <TextBox Text="{Binding Path=Value}" Width="45"></TextBox>
         </DataTemplate>
 
         <viewModel:GasItemTemplateSelector 
@@ -125,32 +126,32 @@
                     <StackPanel Grid.Column="0">
                         <Label Content="Состав газа 1" Height="23" HorizontalAlignment="Center"></Label>
                         <DockPanel>
-                            <ListView x:Name="TargetElementsList" BorderThickness="1" 
-                                      ItemsSource="{Binding Path=GasCompositionItems}"
+                            <ListView x:Name="TargetElementsList1" BorderThickness="1" 
+                                      ItemsSource="{Binding Path=Gas1CompositionItems}"
                                       SelectionMode="Multiple"
-                                      Width="100" MinHeight="180" Margin="3,3,3,3">
-                                <!--<i:Interaction.Triggers>
-                                <EventTrigger EventName="SelectionChanged">
-                                    <i:InvokeCommandAction Command="{Binding Path=UpdateUserPropsScriptCommand}" 
-                                                           CommandParameter="{Binding ElementName=ResourcePropsList, Path=SelectedItems}"/>
-                                </EventTrigger>
-                            </i:Interaction.Triggers>-->
+                                      Width="120" MinHeight="180" Margin="3,3,3,3">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectionChanged">
+                                        <i:InvokeCommandAction Command="{Binding Path=UpdateSelectedGas1ScriptCommand}" 
+                                                           CommandParameter="{Binding ElementName=TargetElementsList1, Path=SelectedItems}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
                                 <ListView.View>
                                     <GridView>
                                         <GridView.Columns>
                                             <GridViewColumn 
                                                 Header="Name" 
                                                 DisplayMemberBinding="{Binding Path=Name}" 
-                                                Width="50"/>
+                                                Width="60"/>
                                             <GridViewColumn 
                                                 Header="%" 
                                                 CellTemplateSelector="{StaticResource gasItemTemplateSelector}" 
-                                                Width="50"/>
+                                                Width="60"/>
                                         </GridView.Columns>
                                     </GridView>
                                 </ListView.View>
                             </ListView>
-                            <TextBox Margin="3,3,3,3"></TextBox>
+                            <TextBox Text="{Binding Path=ChosenGas1Components}" TextWrapping="Wrap" Margin="3,3,3,3"></TextBox>
                         </DockPanel>
                     </StackPanel>
                     <StackPanel Grid.Column="1" Orientation="Horizontal">
@@ -158,6 +159,34 @@
                     </StackPanel>
                     <StackPanel Grid.Column="2">
                         <Label Content="Сотсав газа 2" Height="23" HorizontalAlignment="Center"></Label>
+                        <DockPanel>
+                            <ListView x:Name="TargetElementsList2" BorderThickness="1" 
+                                      ItemsSource="{Binding Path=Gas2CompositionItems}"
+                                      SelectionMode="Multiple"
+                                      Width="120" MinHeight="180" Margin="3,3,3,3">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectionChanged">
+                                        <i:InvokeCommandAction Command="{Binding Path=UpdateSelectedGas2ScriptCommand}" 
+                                                               CommandParameter="{Binding ElementName=TargetElementsList2, Path=SelectedItems}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <ListView.View>
+                                    <GridView>
+                                        <GridView.Columns>
+                                            <GridViewColumn 
+                                                Header="Name" 
+                                                DisplayMemberBinding="{Binding Path=Name}" 
+                                                Width="60"/>
+                                            <GridViewColumn 
+                                                Header="%" 
+                                                CellTemplateSelector="{StaticResource gasItemTemplateSelector}" 
+                                                Width="60"/>
+                                        </GridView.Columns>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                            <TextBox Text="{Binding Path=ChosenGas2Components}" TextWrapping="Wrap" Margin="3,3,3,3"></TextBox>
+                        </DockPanel>
                     </StackPanel>
                 </Grid>
             </TabItem>
