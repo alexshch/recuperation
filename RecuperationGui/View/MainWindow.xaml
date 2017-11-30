@@ -296,6 +296,11 @@
                     <TextBlock>Дополнительные параметры</TextBlock>
                 </TabItem.Header>
             </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock>Схема </TextBlock>
+                </TabItem.Header>
+            </TabItem>
         </TabControl>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
