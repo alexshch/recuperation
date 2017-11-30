@@ -8,6 +8,7 @@ namespace Teplotech.GasParameters
 {
     public class GasN2 : IGas
     {
+        public string Name => "N2";
         public double GetGasEnthalpy(double temperature)
         {
             throw new NotImplementedException();

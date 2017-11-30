@@ -8,6 +8,7 @@ namespace Teplotech.GasParameters
 {
     class GasMix : IGas
     {
+        public string Name => "смесь газов";
         private IEnumerable<PureGasWithPersantage> _gasMixList;
         public GasMix(IEnumerable<PureGasWithPersantage> gasMixList)
         {

@@ -3,6 +3,7 @@ namespace Teplotech.GasParameters
 {
     public class Air : IGas
     {
+        public string Name => "воздух";
         public double GetGasEnthalpy(double temperature)
         {
             return 44.906 * Math.Pow(temperature / 100, 2) + 56.289 * (temperature / 100) + 57.479;

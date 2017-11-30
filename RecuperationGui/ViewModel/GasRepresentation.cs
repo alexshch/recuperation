@@ -16,7 +16,13 @@ namespace RecuperationGui.ViewModel
             Value = value;
         }
 
-        public string Name { get; private set; }
+        public string Name { get; set; }
         public double Value { get; set; }
+    }
+
+    public class ReadyToUseGas
+    {
+        public string Name { get; set; }
+        public List<GasCompositionItem> Items { get; set; }
     }
 }

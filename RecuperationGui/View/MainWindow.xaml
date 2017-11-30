@@ -6,12 +6,12 @@
         xmlns:viewModel="clr-namespace:RecuperationGui.ViewModel"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
-        Title="Расчет параметров рекуператора" Height="350" Width="600">
+        Title="Расчет параметров рекуператора" Height="410" Width="600">
     <Window.DataContext>
         <viewModel:MainWindowViewModel/>
     </Window.DataContext>
     <Window.Resources>
-        
+
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -94,10 +94,12 @@
                             <DockPanel Margin="3,3,3,3">
                                 <Label Content="T1вых"/>
                                 <TextBox Width="60" HorizontalAlignment="Left" Margin="10,0,0,0"></TextBox>
+                                <Label Content="°C"/>
                             </DockPanel>
                             <DockPanel Margin="3,3,3,3">
                                 <Label Content="T2вых"/>
                                 <TextBox Width="60" HorizontalAlignment="Left" Margin="10,0,0,0"></TextBox>
+                                <Label Content="°C"/>
                             </DockPanel>
                             <StackPanel Margin="3,3,3,3">
                                 <RadioButton Content="T1вых"></RadioButton>
@@ -120,36 +122,49 @@
                     <StackPanel Grid.Column="0">
                         <Label Content="Состав газа 1" Height="23" HorizontalAlignment="Center"></Label>
                         <DockPanel>
-                            <ListView x:Name="TargetElementsList1" BorderThickness="1" 
-                                      ItemsSource="{Binding Path=Gas1CompositionItems}"
+                            <StackPanel>
+                                <ListView x:Name="TargetElementsList1" BorderThickness="1" 
+                                      ItemsSource="{Binding Path=Gas1CompositionItems, Mode=TwoWay}"
                                       SelectionMode="Multiple"
-                                      Width="120" MinHeight="180" Margin="3,3,3,3">
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="SelectionChanged">
-                                        <i:InvokeCommandAction Command="{Binding Path=UpdateSelectedGas1ScriptCommand}" 
+                                      Width="120" 
+                                      MinHeight="180" 
+                                      Margin="3,3,3,3"
+                                          HorizontalAlignment="Left"
+                                      >
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="SelectionChanged">
+                                            <i:InvokeCommandAction Command="{Binding Path=UpdateSelectedGas1ScriptCommand}" 
                                                            CommandParameter="{Binding ElementName=TargetElementsList1, Path=SelectedItems}"/>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                                <ListView.View>
-                                    <GridView>
-                                        <GridView.Columns>
-                                            <GridViewColumn 
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridView.Columns>
+                                                <GridViewColumn 
                                                 Header="Name" 
                                                 DisplayMemberBinding="{Binding Path=Name}" 
                                                 Width="60"/>
-                                            <GridViewColumn Header="%" Width="60">
-                                            <GridViewColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <TextBox Text="{Binding Path=Value}" Width="45">
-                                                    </TextBox>
-                                                </DataTemplate>
-                                            </GridViewColumn.CellTemplate>
-                                            </GridViewColumn>
-                                        </GridView.Columns>
-                                    </GridView>
-                                </ListView.View>
-                            </ListView>
+                                                <GridViewColumn Header="%" Width="60">
+                                                    <GridViewColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <TextBox Text="{Binding Path=Value}" Width="45">
+                                                            </TextBox>
+                                                        </DataTemplate>
+                                                    </GridViewColumn.CellTemplate>
+                                                </GridViewColumn>
+                                            </GridView.Columns>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                                <ComboBox 
+                                ItemsSource="{Binding ReadyToUseGasList1}" DisplayMemberPath="Name"
+                                SelectedValue="{Binding Path=SelectedReadyGas1}"
+                                Width="120" 
+                                HorizontalAlignment="Left" 
+                                Margin="3,3,3,3"/>
+                            </StackPanel>
                             <TextBox Text="{Binding Path=ChosenGas1Components}" TextWrapping="Wrap" Margin="3,3,3,3"></TextBox>
+
                         </DockPanel>
                     </StackPanel>
                     <StackPanel Grid.Column="1" Orientation="Horizontal">
@@ -158,35 +173,43 @@
                     <StackPanel Grid.Column="2">
                         <Label Content="Сотсав газа 2" Height="23" HorizontalAlignment="Center"></Label>
                         <DockPanel>
-                            <ListView x:Name="TargetElementsList2" BorderThickness="1" 
+                            <StackPanel>
+                                <ListView x:Name="TargetElementsList2" BorderThickness="1" 
                                       ItemsSource="{Binding Path=Gas2CompositionItems}"
                                       SelectionMode="Multiple"
                                       Width="120" MinHeight="180" Margin="3,3,3,3">
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="SelectionChanged">
-                                        <i:InvokeCommandAction Command="{Binding Path=UpdateSelectedGas2ScriptCommand}" 
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="SelectionChanged">
+                                            <i:InvokeCommandAction Command="{Binding Path=UpdateSelectedGas2ScriptCommand}" 
                                                                CommandParameter="{Binding ElementName=TargetElementsList2, Path=SelectedItems}"/>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                                <ListView.View>
-                                    <GridView>
-                                        <GridView.Columns>
-                                            <GridViewColumn 
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridView.Columns>
+                                                <GridViewColumn 
                                                 Header="Name" 
                                                 DisplayMemberBinding="{Binding Path=Name}" 
                                                 Width="60"/>
-                                            <GridViewColumn Header="%" Width="60">
-                                                <GridViewColumn.CellTemplate>
-                                                    <DataTemplate>
-                                                        <TextBox Text="{Binding Path=Value}" Width="45">
-                                                        </TextBox>
-                                                    </DataTemplate>
-                                                </GridViewColumn.CellTemplate>
-                                            </GridViewColumn>
-                                        </GridView.Columns>
-                                    </GridView>
-                                </ListView.View>
-                            </ListView>
+                                                <GridViewColumn Header="%" Width="60">
+                                                    <GridViewColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <TextBox Text="{Binding Path=Value}" Width="45">
+                                                            </TextBox>
+                                                        </DataTemplate>
+                                                    </GridViewColumn.CellTemplate>
+                                                </GridViewColumn>
+                                            </GridView.Columns>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                                <ComboBox 
+                                    ItemsSource="{Binding ReadyToUseGasList2}" DisplayMemberPath="Name"
+                                    SelectedValue="{Binding Path=SelectedReadyGas2}"
+                                    Width="120" 
+                                    HorizontalAlignment="Left" 
+                                    Margin="3,3,3,3"/>
+                            </StackPanel>
                             <TextBox Text="{Binding Path=ChosenGas2Components}" TextWrapping="Wrap" Margin="3,3,3,3"></TextBox>
                         </DockPanel>
                     </StackPanel>

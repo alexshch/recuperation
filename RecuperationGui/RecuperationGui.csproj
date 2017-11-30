@@ -57,7 +57,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Annotation.cs" />
-    <Compile Include="ViewModel\GasTemplateSelector.cs" />
+    <Compile Include="ViewModel\GasComponents.cs" />
+    <Compile Include="ViewModel\GasRepresentation.cs" />
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -69,6 +70,7 @@
     <Compile Include="Model\AppConfig.cs" />
     <Compile Include="Model\ApplicationModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\ReadyGases.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

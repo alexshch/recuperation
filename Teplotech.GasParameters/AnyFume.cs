@@ -5,6 +5,7 @@ namespace Teplotech.GasParameters
     // 13 % СО2,  11 % Н2О,  76 % N2
     public class AnyFume : IGas
     {
+        public string Name => "дым";
         public double GetGasEnthalpy(double temperature)
         {
             throw new NotImplementedException();

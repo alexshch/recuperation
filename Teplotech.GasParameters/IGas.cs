@@ -4,6 +4,7 @@ namespace Teplotech.GasParameters
 {
     public interface IGas
     {
+        string Name { get; }
         /// <summary>
         /// Получаем энтальпию в кДж/кг 
         /// </summary>
